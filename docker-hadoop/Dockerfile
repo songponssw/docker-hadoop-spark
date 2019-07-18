@@ -47,7 +47,7 @@ RUN curl -L https://github.com/sequenceiq/docker-hadoop-build/releases/download/
 
 # hadoop #CHANGE to v2.7.7
 RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.7.7/hadoop-2.7.7.tar.gz | tar -xz -C /usr/local/
-RUN cd /usr/local && ln -s ./hadoop-2.7.7 hadoop
+RUN cd /usr/local && cp -r ./hadoop-2.7.7 hadoop
 
 # CONFIG: install python 3
 # RUN rm /var/lib/rpm/__db**
@@ -67,8 +67,8 @@ RUN sed -i '/^export JAVA_HOME/ s:.*:export JAVA_HOME=/usr/lib/jvm/java-1.8.0\ne
 RUN sed -i '/^export HADOOP_CONF_DIR/ s:.*:export HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop/:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 #RUN . $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 
-RUN mkdir $HADOOP_PREFIX/input
-RUN cp $HADOOP_PREFIX/etc/hadoop/*.xml $HADOOP_PREFIX/input
+#RUN mkdir $HADOOP_PREFIX/input
+#RUN cp $HADOOP_PREFIX/etc/hadoop/*.xml $HADOOP_PREFIX/input
 
 # pseudo distributed
 ADD core-site.xml.template $HADOOP_PREFIX/etc/hadoop/core-site.xml.template
