@@ -1,8 +1,8 @@
 version: '3'
 services:
   spark:
-    image: docker-hadoop-spark
-    #image: cyborgcat/docker-hadoop-spark:1.0.0
+    # image: docker-hadoop-spark
+    image: cyborgcat/docker-hadoop-spark:1.0.0
     container_name: hadoop-node
     ports:
     - 8088:8088
@@ -10,8 +10,8 @@ services:
     - 4040:4040 
     - 50070:50070
     - 9000:9000
-    volumes:
-      - $PWD/data:/data
+    # volumes:
+      # - $PWD/data:/data
     links:
     - db
     # entrypoint: ["/etc/bootstrap.sh"]
